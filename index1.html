@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Midnight Love 🖤</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  background: radial-gradient(circle at top, #111, #000);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* Card container */
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  padding: 50px 30px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 0 50px rgba(255, 0, 90, 0.3);
+  animation: fadeIn 2s ease;
+}
+
+/* Heading */
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  color: #ff2e63;
+  margin-bottom: 15px;
+}
+
+/* Paragraph */
+p {
+  font-size: 16px;
+  color: #ddd;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Button */
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  background: #ff2e63;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 14px;
+  -webkit-tap-highlight-color: transparent; /* Fix for iPhone */
+}
+
+button:hover {
+  background: #ff004c;
+  transform: scale(1.05);
+}
+
+/* Secret message */
+#secret {
+  margin-top: 15px;
+  font-size: 18px;
+  display: none;
+  animation: glowText 2s ease forwards;
+  color: #fff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowText {
+  from { opacity: 0; text-shadow: 0 0 5px #ff2e63; }
+  to { opacity: 1; text-shadow: 0 0 20px #ff2e63, 0 0 40px #ff004c; }
+}
+
+/* Floating sparks */
+.spark {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #ff2e63;
+  border-radius: 50%;
+  animation: float 8s linear infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* Responsive for small screens */
+@media(max-width: 600px) {
+  .card {
+    padding: 40px 20px;
+  }
+  h1 {
+    font-size: 28px;
+  }
+  p, #secret {
+    font-size: 15px;
+  }
+  button {
+    font-size: 13px;
+    padding: 10px 20px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Happy Valentine's Day 🖤</h1>
+  <p>
+    In a world full of chaos, you are my calm.
+    In a world full of darkness, you are my light.
+    Loving you feels powerful, deep, and endless.
+  </p>
+  <button id="revealBtn">Reveal My Secret ❤️</button>
+  <div id="secret">
+    I choose you. Over and over. Without pause.<br>
+    Without doubt. In every lifetime. 🖤✨
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const btn = document.getElementById('revealBtn');
+  const secret = document.getElementById('secret');
+
+  function showSecret(e){
+    e.preventDefault();
+    secret.style.display = 'block';
+  }
+
+  // Add both click and touch events for iPhone/mobile
+  btn.addEventListener('click', showSecret);
+  btn.addEventListener('touchend', showSecret);
+
+  // Floating spark particles
+  setInterval(() => {
+    const spark = document.createElement('div');
+    spark.classList.add('spark');
+    spark.style.left = Math.random() * 100 + 'vw';
+    document.body.appendChild(spark);
+    setTimeout(() => spark.remove(), 8000);
+  }, 300);
+});
+</script>
+
+</body>
+</html>
